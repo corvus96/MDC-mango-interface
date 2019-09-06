@@ -1,0 +1,54 @@
+<div layout="column" flex layout-wrap>
+    <div flex layout="row" layout-align="space-between center" layout-wrap>
+        <div flex="100" flex-gt-sm="40" layout="row">
+            <md-input-container flex="100" flex-gt-xs="50">
+                <label>REGION</label>
+                <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
+                    <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
+                        {{site}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex="100" flex-gt-xs="50">
+                <label>ID OF MDC</label>
+                <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
+                    <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
+                        {{MDC}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+    <md-card flex="100" flex-gt-sm="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">TEMPERATURE HISTORY</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <ma-point-values point="$ctrl.temp" values="$ctrl.tempValues" from="$ctrl.maUiDateBar.from"
+                to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
+                rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
+            </ma-point-values>
+            <ma-serial-chart style="height: 400px; width: 100%" series-1-values="$ctrl.tempValues"
+                series-1-point="$ctrl.temp" series-1-title="Temperature" legend="false">
+            </ma-serial-chart>
+        </md-card-content>
+    </md-card>
+    <md-card flex="100" flex-gt-sm="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">HUMIDITY HISTORY</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <ma-point-values point="$ctrl.humid" values="$ctrl.humidValues" from="$ctrl.maUiDateBar.from"
+                to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
+                rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
+            </ma-point-values>
+            <ma-serial-chart style="height: 400px; width: 100%" series-1-values="$ctrl.humidValues"
+                series-1-point="$ctrl.humid" series-1-title="Humidity" legend="false">
+            </ma-serial-chart>
+        </md-card-content>
+    </md-card>
+</div>
