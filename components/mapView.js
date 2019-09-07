@@ -13,7 +13,7 @@ define(['angular', 'require'], function (angular, require) {
                 .query()
                 .then(values => {
                     this.sites = values.sort();
-                    this.sites.unshift('ALL');
+                    //this.sites.unshift('ALL');
 
                     if (!this.sites.includes(this.site)) {
 
@@ -72,17 +72,16 @@ define(['angular', 'require'], function (angular, require) {
                     this.orderPoints(points);
                 });
         };
-
+ 
         this.orderPoints = (points) => {
-
             this.MDCIDs.forEach(MDCID => {
-
+                
                 this.mdcs[MDCID] = {
                     'temp': this.filterByNameAndMDCID(points, 'temp-1', MDCID),
                     'totalAveragePower': this.filterByNameAndMDCID(points, 'total-power-1', MDCID),
                     'upsLoad': this.filterByNameAndMDCID(points, 'UPS-Load-1', MDCID),
+                    'totalEnergy' : this.filterByNameAndMDCID(points, 'total-energy-1',MDCID),
                 };
-                console.log(this.mdcs)
             });
         };
 

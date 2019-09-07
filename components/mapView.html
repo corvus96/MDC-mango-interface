@@ -22,11 +22,11 @@
     <div flex="" layout="row" layout-align="space-between stretch">
         <md-card flex="100">
             <md-card-content  layout="row" layout-margin="">
-                <ma-svg flex="20" ng-include="'/modules/mangoUI/web/img/termometer.svg'"/>
+                <ma-svg flex="20" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/termometer.svg'"/>
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
-                            <ma-get-point-value point="$ctrl.mdcs.temp"/>
+                            <ma-get-point-value point="$ctrl.temp"/>
                             {{$ctrl.temp}}
                         </div>
                         <div class="md-caption">
@@ -38,7 +38,7 @@
         </md-card>
         <md-card flex="100">
             <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/modules/mangoUI/web/img/charging.svg'" />
+                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/charging.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
@@ -53,7 +53,7 @@
         </md-card>
         <md-card flex="100">
             <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/modules/mangoUI/web/img/gauge.svg'" />
+                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
@@ -68,7 +68,7 @@
         </md-card>
         <md-card flex="100">
             <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/modules/mangoUI/web/img/battery.svg'" />
+                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/battery.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">

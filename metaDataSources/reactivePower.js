@@ -1,0 +1,1 @@
+return reactivePower = totalActivePower.value-activePower.value;

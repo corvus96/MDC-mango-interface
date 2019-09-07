@@ -1,0 +1,1 @@
+return diferenceWithSetPoint = status.value-setPoint.value;

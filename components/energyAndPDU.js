@@ -69,7 +69,7 @@ define(['angular', 'require'], function (angular, require) {
             $stateParams.MDC = this.MDC;
             $state.go('.', $stateParams, { location: 'replace', notify: false });
 
-            return maPoint
+            maPoint
                 .buildQuery()
                 .eq('tags.MDCID', this.MDC)
                 .limit(1000)
@@ -77,6 +77,7 @@ define(['angular', 'require'], function (angular, require) {
                 .then((points) => {
                     this.orderPoints(points);
                 });
+            
         };
 
         this.orderPoints = (points) => {
