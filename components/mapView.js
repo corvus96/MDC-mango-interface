@@ -82,7 +82,9 @@ define(['angular', 'require'], function (angular, require) {
                     'upsLoad': this.filterByNameAndMDCID(points, 'UPS-Load-1', MDCID),
                     'totalEnergy' : this.filterByNameAndMDCID(points, 'total-energy-1',MDCID),
                 };
+                
             });
+            console.log(this.mdcs)
         };
 
         this.filterByNameAndMDCID = (points, name, MDCID) => {
