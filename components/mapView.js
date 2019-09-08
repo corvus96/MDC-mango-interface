@@ -13,8 +13,8 @@ define(['angular', 'require'], function (angular, require) {
                 .query()
                 .then(values => {
                     this.sites = values.sort();
-                    //this.sites.unshift('ALL');
-
+                    this.sites.unshift('ALL');
+ 
                     if (!this.sites.includes(this.site)) {
 
                         if (this.sites.includes($stateParams.site)) {
@@ -81,10 +81,12 @@ define(['angular', 'require'], function (angular, require) {
                     'totalAveragePower': this.filterByNameAndMDCID(points, 'total-power-1', MDCID),
                     'upsLoad': this.filterByNameAndMDCID(points, 'UPS-Load-1', MDCID),
                     'totalEnergy' : this.filterByNameAndMDCID(points, 'total-energy-1',MDCID),
+                    'statusOfMDC' : this.filterByNameAndMDCID(points, 'status-of-MDC',MDCID),
+                    'operationMode' : this.filterByNameAndMDCID(points, 'operation-mode',MDCID),
                 };
                 
             });
-            console.log(this.mdcs)
+            console.log(this.mdcs[MDCID]) 
         };
 
         this.filterByNameAndMDCID = (points, name, MDCID) => {

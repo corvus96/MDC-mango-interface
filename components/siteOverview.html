@@ -1,5 +1,28 @@
-<md-card>
-    <md-card-content>
-        <h1>{{$ctrl.siteOverview}}</h1>
-    </md-card-content>
-</md-card>
+<div flex layout="row" layout-align="space-between start" layout-wrap>
+    <div flex>
+        <md-card layout="column">
+                <ma-svg flex ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/DataBunker.svg'" />
+                <br>
+                <h4 ng-style="{'color': '#0780C6'}">PUT A MODEL HERE</h4>
+                <h6></h6>
+        </md-card>
+    </div>
+    <div flex="100" flex-gt-sm="40" layout="row">
+        <md-input-container flex="100" flex-gt-xs="50">
+            <label>REGION</label>
+            <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
+                <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
+                    {{site}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex="100" flex-gt-xs="50">
+            <label>ID OF MDC</label>
+            <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
+                <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
+                    {{MDC}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+</div>

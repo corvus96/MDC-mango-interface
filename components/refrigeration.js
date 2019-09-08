@@ -7,7 +7,7 @@ define(['angular', 'require'], function(angular, require) {
         this.maUiDateBar = maUiDateBar;
         this.refreshSites();
     };
-
+ 
     this.refreshSites = () => {
         return maDataPointTags
         .buildQuery('siteName')

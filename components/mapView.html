@@ -1,32 +1,32 @@
 <div layout="column" flex layout-wrap>
-        <div flex layout="row" layout-align="space-between center" layout-wrap>
-                <div flex="100" flex-gt-sm="40" layout="row">
-                    <md-input-container flex="100" flex-gt-xs="50">
-                        <label>REGION</label>
-                        <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
-                            <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
-                                {{site}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                    <md-input-container flex="100" flex-gt-xs="50">
-                        <label>ID OF MDC</label>
-                        <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
-                            <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
-                                {{MDC}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-            </div>
-    <div flex="" layout="row" layout-align="space-between stretch">
+    <div flex layout="row" layout-align="space-between center" layout-wrap>
+        <div flex="100" flex-gt-sm="40" layout="row">
+            <md-input-container flex="100" flex-gt-xs="50">
+                <label>REGION</label>
+                <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
+                    <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
+                        {{site}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex="100" flex-gt-xs="50">
+                <label>ID OF MDC</label>
+                <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
+                    <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
+                        {{MDC}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+    <div flex="" layout="row" layout-align="space-around stretch">
         <md-card flex="100">
-            <md-card-content  layout="row" layout-margin="">
-                <ma-svg flex="20" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/termometer.svg'"/>
+            <md-card-content layout="row" layout-margin="">
+                <ma-svg flex="20" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/termometer.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
-                            <ma-get-point-value point="$ctrl.temp"/>
+                            <ma-get-point-value point="$ctrl.temp" />
                             {{$ctrl.temp}}
                         </div>
                         <div class="md-caption">
@@ -38,7 +38,8 @@
         </md-card>
         <md-card flex="100">
             <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/charging.svg'" />
+                <ma-svg flex="20" ng-style="{'color':'white'}"
+                    ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/charging.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
@@ -53,7 +54,8 @@
         </md-card>
         <md-card flex="100">
             <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg'" />
+                <ma-svg flex="20" ng-style="{'color':'white'}"
+                    ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
@@ -68,14 +70,15 @@
         </md-card>
         <md-card flex="100">
             <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/battery.svg'" />
+                <ma-svg flex="20" ng-style="{'color':'white'}"
+                    ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/battery.svg'" />
                 <div flex="80" flex-offset="15">
                     <p flex="">
                         <div class="md-subhead" ng-style="{'color': '#0780C6'}">
                             CANTIDAD
                         </div>
                         <div class="md-caption">
-                            UPS <br/> LOAD LEVEL
+                            UPS <br /> LOAD LEVEL
                         </div>
                     </p>
                 </div>
@@ -116,13 +119,59 @@
                         </div>
                     </info-window>
                 </ma-map>
+                <br />
+                <div layout="column" layout-wrap>
+                    <div flex layout="row" layout-wrap layout-align="space-between center">
+                        <ma-svg flex="5"
+                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg'" />
+                        <span flex flex-offset="5">NORMAL</span>
+                        <ma-svg flex="5"
+                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg'" />
+                        <span flex flex-offset="5"> CRITIC STATE</span>
+                    </div>
+                    <br/>
+                    <div flex layout="row" layout-wrap layout-align="space-between center">
+                        <ma-svg flex="5"
+                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg'" />
+                        <span flex flex-offset="5">PRE-ALARM</span>
+                        <ma-svg flex="5"
+                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg'" />
+                        <span flex flex-offset="5">OFF</span>
+                    </div>
+                </div>
             </md-card-content>
         </md-card>
-        <md-card flex="70">
-            <md-card-content>
-
-            </md-card-content>
+        <md-card flex="70" layout-padding>
+                <md-table-container>
+                        <table md-table md-row-select multiple ng-model="page.selected" md-progress="promise">
+                            <thead md-head>
+                            <tr md-row ng-style="{'background-color': '#121212'}" class="md-whiteframe-8dp">
+                                <th md-column  ng-style="{'color': '#0780C6'}">STATE</th>
+                                <th md-column  ng-style="{'color': '#0780C6'}">MDC</th>
+                                <th md-column  ng-style="{'color': '#0780C6'}">CURRENT TEMP.</th>
+                                <th md-column  ng-style="{'color': '#0780C6'}">OPERAT. MODE</th>
+                                <th md-column  ng-style="{'color': '#0780C6'}">PREV. DAY CONS.</th>
+                                <th md-column  ng-style="{'color': '#0780C6'}">CURRENT CONS.</th>
+                                <th md-column  ng-style="{'color': '#0780C6'}">UPS LOAD</th>
+                            </tr>
+                            </thead>
+                            <tbody md-body>
+                            <tr md-row ng-repeat="(MDCID, mdc) in $ctrl.mdcs">
+                                <td md-cell>
+                                        
+                                        {{MDCID}}
+                                </td>
+                                <td md-cell>
+                                        <ma-point-value point="mdc.temp"></ma-point-value>
+                                        {{mdc.temp.value}}
+                                </td>
+                                <td md-cell>{{point.xid}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                    
+                    <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 20]" md-page="query.page" md-total="{{points.$total}}" md-page-select></md-table-pagination>
         </md-card>
     </div>
 </div>
-
