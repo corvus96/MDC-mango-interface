@@ -1,28 +1,87 @@
 <div flex layout="row" layout-align="space-between start" layout-wrap>
     <div flex>
         <md-card layout="column">
+            <card-content>
                 <ma-svg flex ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/DataBunker.svg'" />
                 <br>
-                <h4 ng-style="{'color': '#0780C6'}">PUT A MODEL HERE</h4>
-                <h6></h6>
+                <div layout="column">
+                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
+                        PUT A MODEL HERE
+                    </h4>
+                    <h6 flex flex-offset="5">
+                        MODEL
+                    </h6>
+                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
+                        <ma-point-value point="$ctrl.coolingCapacity"></ma-point-value>
+                    </h4>
+                    <h6 flex flex-offset="5">
+                        COOLING CAPACITY
+                    </h6>
+                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
+                        <ma-point-value point="$ctrl.capacityOfUPS"></ma-point-value>
+                    </h4>
+                    <h6 flex flex-offset="5">
+                        UPS CAPACITY
+                    </h6>
+                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
+                        <ma-point-value point="$ctrl.cabinet"></ma-point-value>
+                    </h4>
+                    <h6 flex flex-offset="5">
+                        CABINET CAPACITY
+                    </h6>
+                </div>
+            </card-content>
         </md-card>
     </div>
     <div flex="100" flex-gt-sm="40" layout="row">
-        <md-input-container flex="100" flex-gt-xs="50">
-            <label>REGION</label>
-            <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
-                <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
-                    {{site}}
-                </md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container flex="100" flex-gt-xs="50">
-            <label>ID OF MDC</label>
-            <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
-                <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
-                    {{MDC}}
-                </md-option>
-            </md-select>
-        </md-input-container>
+        <div layout="column">
+            <md-input-container flex="100" flex-gt-xs="50">
+                <label>REGION</label>
+                <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
+                    <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
+                        {{site}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-card>
+                <card-content layout="column">
+                    <br>
+                    <span flex-offset="5" class="md-subhead">GENERAL STATE</span>
+                    <br>
+                    <md-divider inset></md-divider>
+                    <md-list>
+                        <md-list-item class="md-2-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg" ng-if="$ctrl.operationMode.value"/>
+                                <md-icon md-svg-src ="'/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg" ng-if="!$ctrl.operationMode.value"/>
+                            <div class="md-list-item-text">
+                                <h2 ng-style="{'color': '#0780C6'}">
+                                    <ma-point-value point="$ctrl.operationMode"></ma-point-value>
+                                </h2>
+                                <h6>OPERATION MODE</h6>
+                            </div>
+                            <md-divider inset></md-divider>
+                        </md-list-item>
+
+                    </md-list>
+
+                </card-content>
+            </md-card>
+        </div>
+        <div layout="column">
+            <md-input-container flex="100" flex-gt-xs="50">
+                <label>ID OF MDC</label>
+                <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
+                    <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
+                        {{MDC}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-card>
+                <card-content>
+
+                </card-content>
+            </md-card>
+        </div>
+
     </div>
 </div>
