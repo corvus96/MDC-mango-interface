@@ -1,11 +1,22 @@
 define(['angular', 'require'], function (angular, require) {
     'use strict';
-    SiteOverviewController.$inject = ['$scope', 'maDataPointTags', '$state', '$stateParams', 'maPoint', 'maUiDateBar'];
+    SiteOverviewController.$inject = ['$scope','maDataPointTags', '$state', '$stateParams', 'maPoint', 'maUiDateBar'];
 
-    function SiteOverviewController($scope, maDataPointTags, $state, $stateParams, maPoint, maUiDateBar) {
+    function SiteOverviewController($scope,maDataPointTags, $state, $stateParams, maPoint, maUiDateBar) {
         this.$onInit = () => {
+            $scope.data = {};
+            $scope.data.cb1 = false;
+            $scope.data.cb2 = false;
+            $scope.data.cb3 = false;
+            $scope.data.cb4 = false;
+            $scope.data.cb5 = false;
+            $scope.data.cb6 = false;
+            $scope.data.cb7 = false;
+            $scope.data.cb8 = false;
+            $scope.data.cb9 = false;
             this.maUiDateBar = maUiDateBar;
             this.refreshSites();
+
         };
 
         this.refreshSites = () => {
