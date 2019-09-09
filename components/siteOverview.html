@@ -1,39 +1,43 @@
-<div flex layout="row" layout-align="space-between start" layout-wrap>
-    <div flex>
-        <md-card layout="column">
-            <card-content>
-                <ma-svg flex ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/DataBunker.svg'" />
-                <br>
-                <div layout="column">
-                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
-                        PUT A MODEL HERE
-                    </h4>
-                    <h6 flex flex-offset="5">
-                        MODEL
-                    </h6>
-                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
-                        <ma-point-value point="$ctrl.coolingCapacity"></ma-point-value>
-                    </h4>
-                    <h6 flex flex-offset="5">
-                        COOLING CAPACITY
-                    </h6>
-                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
-                        <ma-point-value point="$ctrl.capacityOfUPS"></ma-point-value>
-                    </h4>
-                    <h6 flex flex-offset="5">
-                        UPS CAPACITY
-                    </h6>
-                    <h4 flex flex-offset="5" ng-style="{'color': '#0780C6'}">
-                        <ma-point-value point="$ctrl.cabinet"></ma-point-value>
-                    </h4>
-                    <h6 flex flex-offset="5">
-                        CABINET CAPACITY
-                    </h6>
-                </div>
-            </card-content>
+<div flex layout="row" layout-align="start start" layout-wrap>
+    <div flex="30">
+        <md-card layout="column" layout-fill  >
+                <img ng-style="{'width': 'max-width'}" src="/rest/v2/file-stores/public/components/img-icon-svg/DataBunker.png" />
+                <md-list>
+                        <md-list-item class="md-2-line">
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    PUT A MODEL HERE
+                                </h4>
+                                <h6 ng-style="{'color': '#BCBCBC'}">MODEL</h6>
+                            </div>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.coolingCapacity"></ma-point-value>
+                                </h4>
+                                <h6 ng-style="{'color': '#BCBCBC'}">COOLING CAPACITY</h6>
+                            </div>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.capacityOfUPS"></ma-point-value>
+                                </h4>
+                                <h6 ng-style="{'color': '#BCBCBC'}">UPS CAPACITY</h6>
+                            </div>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.cabinet"></ma-point-value>
+                                </h4>
+                                <h6 ng-style="{'color': '#BCBCBC'}">CABINET CAPACITY</h6>
+                            </div>
+                        </md-list-item>
+                </md-list>
         </md-card>
     </div>
-    <div flex="100" flex-gt-sm="40" layout="row">
         <div layout="column">
             <md-input-container flex="100" flex-gt-xs="50">
                 <label>REGION</label>
@@ -54,16 +58,79 @@
                                 <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg" ng-if="$ctrl.operationMode.value"/>
                                 <md-icon md-svg-src ="'/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg" ng-if="!$ctrl.operationMode.value"/>
                             <div class="md-list-item-text">
-                                <h2 ng-style="{'color': '#0780C6'}">
-                                    <ma-point-value point="$ctrl.operationMode"></ma-point-value>
-                                </h2>
-                                <h6>OPERATION MODE</h6>
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value ng-style="'text-transform': 'capitalize'" point="$ctrl.operationMode"></ma-point-value>
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">OPERATION MODE (DURATION)</h6>
                             </div>
                             <md-divider inset></md-divider>
                         </md-list-item>
-
+                        <md-list-item class="md-2-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg" ng-if="$ctrl.againstFireSystem.value"/>
+                                <md-icon md-svg-src ="'/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg" ng-if="!$ctrl.againstFireSystem.value"/>
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value point="$ctrl.againstFireSystem"></ma-point-value>
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">STATE OF THE SYSTEM AGAINST FIRE</h6>
+                            </div>
+                        </md-list-item>
                     </md-list>
-
+                </card-content>
+            </md-card>
+            <md-card>
+                <card-content layout="column">
+                    <br>
+                    <span flex-offset="5" class="md-subhead">REFRIGERATION SYSTEM</span>
+                    <br>
+                    <md-divider inset></md-divider>
+                    <md-list>
+                        <md-list-item class="md-2-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg" ng-if="$ctrl.operationMode.value"/>
+                                <md-icon md-svg-src ="'/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg" ng-if="!$ctrl.operationMode.value"/>
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value point="$ctrl.coolingState"></ma-point-value>
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">COOLING STATE</h6>
+                            </div>
+                            <md-divider inset></md-divider>
+                        </md-list-item>
+                        <md-list-item class="md-3-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/termometer.svg"/>
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value point="$ctrl.temp"></ma-point-value>
+                                      (<ma-point-value point="$ctrl.tempDiference"></ma-point-value>)
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">SETPOINT</h6>
+                                <h6  ng-style="{'color': '#BCBCBC'}">(DIFERENCE WITH THE CURRENT VALUE)</h6>
+                            </div>
+                            <md-divider inset></md-divider>
+                        </md-list-item>
+                        <md-list-item class="md-3-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/humidity.svg"/>
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value point="$ctrl.humid"></ma-point-value>
+                                      (<ma-point-value point="$ctrl.humidDiference"></ma-point-value>)
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">SETPOINT</h6>
+                                <h6  ng-style="{'color': '#BCBCBC'}">(DIFERENCE WITH THE CURRENT VALUE)</h6>
+                            </div>
+                            <md-divider inset></md-divider>
+                        </md-list-item>
+                        <md-list-item class="md-2-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg"/>
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value point="$ctrl.totalRefrigerationPower"></ma-point-value>  @ 
+                                      <map-point-value point="$ctrl.averageVoltageCoolingSystem"></map-point-value>
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">COOLING CONSUMPTION</h6>
+                            </div>
+                        </md-list-item>
+                    </md-list>
                 </card-content>
             </md-card>
         </div>
@@ -77,11 +144,78 @@
                 </md-select>
             </md-input-container>
             <md-card>
+                <card-content layout="column">
+                    <br>
+                    <span flex-offset="5" class="md-subhead">ACCESS CONTROL</span>
+                    <br>
+                    <md-divider inset></md-divider>
+                    <md-list>
+                        <md-list-item class="md-2-line">
+                                <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg" ng-if="$ctrl.accessControlState.value"/>
+                                <md-icon md-svg-src ="'/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg" ng-if="!$ctrl.accessControlState.value"/>
+                            <div class="md-list-item-text">
+                                <h4 ng-style="{'color': '#00ADEF'}">
+                                    <ma-point-value point="$ctrl.accessControlState"></ma-point-value>
+                                </h4>
+                                <h6  ng-style="{'color': '#BCBCBC'}">STATE</h6>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </card-content>
+            </md-card>
+            <md-card>
                 <card-content>
-
+                    <card-content layout="column">
+                        <br>
+                        <span flex-offset="5" class="md-subhead">ENERGY AND PDUs</span>
+                        <br>
+                        <md-divider inset></md-divider>
+                        <md-list>
+                            <md-list-item class="md-2-line">
+                                    <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg"/>
+                                <div class="md-list-item-text">
+                                    <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.totalPower"></ma-point-value>  @
+                                          <ma-point-value point="$ctrl.averageVoltagePDU"></ma-point-value>
+                                    </h4>
+                                    <h6 ng-style="{'color': '#BCBCBC'}">CURRENT CONSUMPTION</h6>
+                                </div>
+                                <md-divider inset></md-divider>
+                            </md-list-item>
+                            <md-list-item class="md-2-line">
+                                    <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg"/>
+                                <div class="md-list-item-text">
+                                    <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.averageCurrent"></ma-point-value>
+                                    </h4>
+                                    <h6  ng-style="{'color': '#BCBCBC'}">AVERAGE CURRENT FOR OUTPUT</h6>
+                                </div>
+                                <md-divider inset></md-divider>
+                            </md-list-item>
+                            <md-list-item class="md-2-line">
+                                    <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg" ng-if="$ctrl.currentFeed.value"/>
+                                    <md-icon md-svg-src ="'/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg" ng-if="!$ctrl.currentFeed.value"/>
+                                <div class="md-list-item-text">
+                                    <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.currentFeed"></ma-point-value>  <span ng-if="$ctrl.currentFeed.value">(CHARGING UPS)</span>
+                                        <span ng-if="!$ctrl.currentFeed.value">(DISCHARGING UPS)</span>
+                                    </h4>
+                                    <h6  ng-style="{'color': '#BCBCBC'}">CURRENT FEED</h6>
+                                </div>
+                                <md-divider inset></md-divider>
+                            </md-list-item>
+                            <md-list-item class="md-2-line">
+                                    <md-icon md-svg-src ="/rest/v2/file-stores/public/components/img-icon-svg/battery.svg"/>
+                                <div class="md-list-item-text">
+                                    <h4 ng-style="{'color': '#00ADEF'}">
+                                        <ma-point-value point="$ctrl.upsLoad"></ma-point-value>
+                                    </h4>
+                                    <h6  ng-style="{'color': '#BCBCBC'}">UPS CHARGE</h6>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </card-content>
                 </card-content>
             </md-card>
         </div>
-
-    </div>
 </div>
