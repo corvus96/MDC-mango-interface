@@ -1,1 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><defs><style>.cls-1{fill:#fafafa;}</style></defs><title>humidity</title><g id="Layer_2" data-name="Layer 2"><g id="Capa_1" data-name="Capa 1"><path class="cls-1" d="M280.86,112.83c-26.17-33.41-53.24-67.9-75.07-105a16,16,0,0,0-27.55,0c-21.82,37-48.9,71.55-75.07,104.93C50.11,180.45,0,244.35,0,320,0,425.89,86.11,512,192,512s192-86.11,192-192C384,244.38,333.92,180.48,280.86,112.83ZM192,480c-88.22,0-160-71.78-160-160,0-64.61,46.78-124.26,96.35-187.46C150,105,172.19,76.64,192,46.3c19.81,30.34,42,58.69,63.65,86.28C305.22,195.74,352,255.42,352,320,352,408.22,280.22,480,192,480Z"/><path class="cls-1" d="M144,192a48,48,0,1,0,48,48A48.06,48.06,0,0,0,144,192Zm0,64a16,16,0,1,1,16-16A16,16,0,0,1,144,256Z"/><path class="cls-1" d="M240,352a48,48,0,1,0,48,48A48.06,48.06,0,0,0,240,352Zm0,64a16,16,0,1,1,16-16A16,16,0,0,1,240,416Z"/><path class="cls-1" d="M283.3,228.7a16,16,0,0,0-22.63,0l-160,160a16,16,0,0,0,22.63,22.63l160-160A16,16,0,0,0,283.3,228.7Z"/></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 384 384"
+   version="1.1"
+   id="svg4205"
+   sodipodi:docname="humidity.svg"
+   width="384"
+   height="384"
+   inkscape:version="0.92.4 (f8dce91, 2019-08-02)">
+  <metadata
+     id="metadata4209">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>humidity</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1299"
+     inkscape:window-height="713"
+     id="namedview4207"
+     showgrid="false"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="192"
+     inkscape:cy="256"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4205" />
+  <defs
+     id="defs4191">
+    <style
+       id="style4189">.cls-1{fill:#fafafa;}</style>
+  </defs>
+  <title
+     id="title4193">humidity</title>
+  <g
+     id="Layer_2"
+     data-name="Layer 2"
+     transform="matrix(1,0,0,0.74995514,0,0.02297)">
+    <g
+       id="Capa_1"
+       data-name="Capa 1">
+      <path
+         class="cls-1"
+         d="M 280.86,112.83 C 254.69,79.42 227.62,44.93 205.79,7.83 a 16,16 0 0 0 -27.55,0 c -21.82,37 -48.9,71.55 -75.07,104.93 C 50.11,180.45 0,244.35 0,320 0,425.89 86.11,512 192,512 297.89,512 384,425.89 384,320 384,244.38 333.92,180.48 280.86,112.83 Z M 192,480 C 103.78,480 32,408.22 32,320 32,255.39 78.78,195.74 128.35,132.54 150,105 172.19,76.64 192,46.3 c 19.81,30.34 42,58.69 63.65,86.28 C 305.22,195.74 352,255.42 352,320 c 0,88.22 -71.78,160 -160,160 z"
+         id="path4195"
+         inkscape:connector-curvature="0"
+         style="fill:#fafafa" />
+      <path
+         class="cls-1"
+         d="m 144,192 a 48,48 0 1 0 48,48 48.06,48.06 0 0 0 -48,-48 z m 0,64 a 16,16 0 1 1 16,-16 16,16 0 0 1 -16,16 z"
+         id="path4197"
+         inkscape:connector-curvature="0"
+         style="fill:#fafafa" />
+      <path
+         class="cls-1"
+         d="m 240,352 a 48,48 0 1 0 48,48 48.06,48.06 0 0 0 -48,-48 z m 0,64 a 16,16 0 1 1 16,-16 16,16 0 0 1 -16,16 z"
+         id="path4199"
+         inkscape:connector-curvature="0"
+         style="fill:#fafafa" />
+      <path
+         class="cls-1"
+         d="m 283.3,228.7 a 16,16 0 0 0 -22.63,0 l -160,160 a 16.001826,16.001826 0 0 0 22.63,22.63 l 160,-160 a 16,16 0 0 0 0,-22.63 z"
+         id="path4201"
+         inkscape:connector-curvature="0"
+         style="fill:#fafafa" />
+    </g>
+  </g>
+</svg>

@@ -78,7 +78,6 @@ define(['angular', 'require'], function (angular, require) {
         };
 
         this.MDCChanged = () => {
-
             $stateParams.MDC = this.MDC;
             $state.go('.', $stateParams, { location: 'replace', notify: false });
 

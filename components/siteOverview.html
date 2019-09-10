@@ -57,7 +57,7 @@
                         <md-list-item class="md-2-line">
                             <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg"
                                 ng-if="$ctrl.operationMode.value" />
-                            <md-icon md-svg-src="'/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg"
+                            <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg"
                                 ng-if="!$ctrl.operationMode.value" />
                             <div class="md-list-item-text">
                                 <h4 ng-style="{'color': '#00ADEF'}">
@@ -72,7 +72,7 @@
                         <md-list-item class="md-2-line">
                             <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg"
                                 ng-if="$ctrl.againstFireSystem.value" />
-                            <md-icon md-svg-src="'/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg"
+                            <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg"
                                 ng-if="!$ctrl.againstFireSystem.value" />
                             <div class="md-list-item-text">
                                 <h4 ng-style="{'color': '#00ADEF'}">
@@ -91,9 +91,9 @@
                     <md-list>
                         <md-list-item class="md-2-line">
                             <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg"
-                                ng-if="$ctrl.operationMode.value" />
-                            <md-icon md-svg-src="'/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg"
                                 ng-if="!$ctrl.operationMode.value" />
+                            <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg"
+                                ng-if="$ctrl.operationMode.value" />
                             <div class="md-list-item-text">
                                 <h4 ng-style="{'color': '#00ADEF'}">
                                     <ma-point-value point="$ctrl.coolingState"></ma-point-value>
@@ -157,7 +157,7 @@
                         <md-list-item class="md-2-line">
                             <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg"
                                 ng-if="$ctrl.accessControlState.value" />
-                            <md-icon md-svg-src="'/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg"
+                            <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareRed.svg"
                                 ng-if="!$ctrl.accessControlState.value" />
                             <div class="md-list-item-text">
                                 <h4 ng-style="{'color': '#00ADEF'}">
@@ -198,7 +198,7 @@
                         <md-list-item class="md-2-line">
                             <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg"
                                 ng-if="$ctrl.currentFeed.value" />
-                            <md-icon md-svg-src="'/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg"
+                            <md-icon md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg"
                                 ng-if="!$ctrl.currentFeed.value" />
                             <div class="md-list-item-text">
                                 <h4 ng-style="{'color': '#00ADEF'}">
@@ -301,7 +301,10 @@
                     series-5-point="$ctrl.totalRefriReactivePower" series-6-values="$ctrl.totalRefrigerationPowerValues"
                     series-6-point="$ctrl.totalRefrigerationPower" series-7-values="$ctrl.tempValues"
                     series-7-point="$ctrl.temp" series-8-values="$ctrl.upsLoadValues" series-8-point="$ctrl.upsLoad"
-                    series-9-values="$ctrl.humidValues" series-9-point="$ctrl.humid" legend="false">
+                    series-9-values="$ctrl.humidValues" 
+                    series-9-point="$ctrl.humid" 
+                    legend="false"
+                    balloon="true">
                 </ma-serial-chart>
                 <md-card-title-text layout-padding flex>
                     <span class="md-subhead">AVAILABLE VARIABLES</span>

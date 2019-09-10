@@ -49,9 +49,8 @@ define(['angular', 'require'], function (angular, require) {
                 .query()
                 .then(values => {
                     this.MDCIDs = values.sort();
-
+                    console.log(values);
                     if (!this.MDCIDs.includes(this.MDC)) {
-
                         if (this.MDCIDs.includes($stateParams.MDC)) {
                             this.MDC = $stateParams.MDC;
                         } else if (this.MDCIDs.length) {
@@ -65,9 +64,12 @@ define(['angular', 'require'], function (angular, require) {
                 });
         };
 
+
+
         this.MDCChanged = () => {
             $stateParams.MDC = this.MDC;
             $state.go('.', $stateParams, { location: 'replace', notify: false });
+            this.outputs = {};
 
             maPoint
                 .buildQuery()
@@ -75,12 +77,28 @@ define(['angular', 'require'], function (angular, require) {
                 .limit(1000)
                 .query()
                 .then((points) => {
+                    this.getOutputsNames();
                     this.orderPoints(points);
                 });
-            
+
+        };
+
+        this.getOutputsNames = () => {
+            let queryBuilder1 = maDataPointTags.buildQuery('outputs');
+
+            queryBuilder1.eq('MDCID', this.MDC);
+
+    
+            return queryBuilder1
+                .query()
+                .then(values => {
+                    this.outputs = values.sort();
+                    Console.log(this.MDC)
+                });
         };
 
         this.orderPoints = (points) => {
+
             this.totalAveragePower = this.filterByName(points, 'total-power-1');
             this.totalEnergy = this.filterByName(points, 'total-energy-1');
         };
