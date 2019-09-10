@@ -42,9 +42,9 @@
             <div layout="column" layout-wrap layout-padding="">
                 <md-input-container flex >
                     <label>Select a PDU output:</label>
-                    <md-select ng-model="$ctrl.take" ng-change="$ctrl.MDCChanged()">
-                        <md-option ng-repeat="take in $ctrl.takes" value="{{take}}">
-                            {{take}}
+                    <md-select ng-model="$ctrl.output" ng-change="$ctrl.outputChanged()">
+                        <md-option ng-repeat="output in $ctrl.outputs" value="{{output}}">
+                            {{output}}
                         </md-option>
                     </md-select>
                 </md-input-container>
