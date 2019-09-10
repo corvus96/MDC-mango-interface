@@ -1,183 +1,142 @@
-<div layout="column" flex>
-    <div flex layout="row" layout-align="space-between center" layout-wrap>
-        <div flex="100" flex-gt-sm="40" layout="row">
-            <md-input-container flex="100" flex-gt-xs="50">
-                <label>REGION</label>
-                <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
-                    <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
-                        {{site}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-            <md-input-container flex="100" flex-gt-xs="50">
-                <label>ID OF MDC</label>
-                <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
-                    <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
-                        {{MDC}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-        </div>
-    </div>
-    <div flex="" layout="row" layout-align="space-around stretch">
-        <md-card flex="100">
-            <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/termometer.svg'" />
-                <div flex="80" flex-offset="15">
-                    <p flex="">
-                        <div class="md-subhead" ng-style="{'color': '#00ADEF'}">
-                            <ma-get-point-value point="$ctrl.mdcs.temp" />
-                            {{$ctrl.mdcs.temp}}
-                        </div>
-                        <div class="md-caption">
-                            AVERAGE <br /> TEMPERATURE
-                        </div>
-                    </p>
-                </div>
-            </md-card-content>
-        </md-card>
-        <md-card flex="100">
-            <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}"
-                    ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/charging.svg'" />
-                <div flex="80" flex-offset="15">
-                    <p flex="">
-                        <div class="md-subhead" ng-style="{'color': '#00ADEF'}">
-                            CANTIDAD
-                        </div>
-                        <div class="md-caption">
-                            PREVIUS DAY <br /> CONSUMPTION
-                        </div>
-                    </p>
-                </div>
-            </md-card-content>
-        </md-card>
-        <md-card flex="100">
-            <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}"
-                    ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg'" />
-                <div flex="80" flex-offset="15">
-                    <p flex="">
-                        <div class="md-subhead" ng-style="{'color': '#00ADEF'}">
-                            CANTIDAD
-                        </div>
-                        <div class="md-caption">
-                            CURRENT AVG. <br /> CONSUMPTION
-                        </div>
-                    </p>
-                </div>
-            </md-card-content>
-        </md-card>
-        <md-card flex="100">
-            <md-card-content layout="row" layout-margin="">
-                <ma-svg flex="20" ng-style="{'color':'white'}"
-                    ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/battery.svg'" />
-                <div flex="80" flex-offset="15">
-                    <p flex="">
-                        <div class="md-subhead" ng-style="{'color': '#00ADEF'}">
-                            CANTIDAD
-                        </div>
-                        <div class="md-caption">
-                            UPS <br /> LOAD LEVEL
-                        </div>
-                    </p>
-                </div>
-            </md-card-content>
-        </md-card>
-    </div>
-
-    <div flex="" layout="row" layout-align="space-between start">
-        <md-card flex="30">
-            <md-card-content>
-                <p>MAP</p>
-                <br>
-                <ma-map lat="-12.95" long="-38.45" zoom="12" map-type="roadmap" info-window-theme="dark"
-                    desktop-height="600px" mobile-height="450px" ng-init="myMarkers={
+<div layout="row" layout-align="space-between start" layout-wrap>
+    <md-card flex>
+        <md-card-content>
+            <p>MAP</p>
+            <ma-map lat="-12.95" long="-38.45" zoom="12" map-type="roadmap" info-window-theme="dark"
+                desktop-height="600px" mobile-height="450px" ng-init="myMarkers={
                         true: 'img/map-markers/purple-dot.png',
                         false: 'img/map-markers/orange-dot.png'}" output-data="myOutputData">
-                    <marker id="marker1" position="-12.90, -38.41" icon="{url: '{{myMarkers[myPoint1.value]}}'}"
-                        on-click="$parent.$ctrl.toggleInfoWindow('setPoint1', 'marker1')"></marker>
-                    <marker id="marker2" position="-12.95, -38.43" draggable="true"
-                        icon="{url: 'img/map-markers/green-dot.png'}"
-                        on-click="$parent.$ctrl.toggleInfoWindow('setPoint2', 'marker2')"></marker>
-                    <marker id="marker3" position="-12.99, -38.47" draggable="true"
-                        on-click="$parent.$ctrl.toggleInfoWindow('chart1', 'marker3')"></marker>
-                    <info-window id="setPoint2">
-                        <div>
-                            <ma-set-point-value point="myPoint2"></ma-set-point-value>
-                        </div>
-                    </info-window>
-                    <info-window id="setPoint1">
-                        <div>
-                            <ma-set-point-value point="myPoint1"></ma-set-point-value>
-                        </div>
-                    </info-window>
-                    <info-window id="chart1">
-                        <div layout="row" layout-padding>
-                            <ma-serial-chart style="height: 150px; width: 250px" series-1-point="myPoint3"
-                                series-1-values="chart1Vals"></ma-serial-chart>
-                        </div>
-                    </info-window>
-                </ma-map>
-                <br />
-                <div layout="column" layout-wrap>
-                    <div flex layout="row" layout-wrap layout-align="space-between center">
-                        <ma-svg flex="5"
-                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg'" />
-                        <span flex flex-offset="5">NORMAL</span>
-                        <ma-svg flex="5"
-                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg'" />
-                        <span flex flex-offset="5"> CRITIC STATE</span>
+                <marker id="marker1" position="-12.90, -38.41" icon="{url: '{{myMarkers[myPoint1.value]}}'}"
+                    on-click="$parent.$ctrl.toggleInfoWindow('setPoint1', 'marker1')"></marker>
+                <marker id="marker2" position="-12.95, -38.43" draggable="true"
+                    icon="{url: 'img/map-markers/green-dot.png'}"
+                    on-click="$parent.$ctrl.toggleInfoWindow('setPoint2', 'marker2')"></marker>
+                <marker id="marker3" position="-12.99, -38.47" draggable="true"
+                    on-click="$parent.$ctrl.toggleInfoWindow('chart1', 'marker3')"></marker>
+                <info-window id="setPoint2">
+                    <div>
+                        <ma-set-point-value point="myPoint2"></ma-set-point-value>
                     </div>
-                    <br />
-                    <div flex layout="row" layout-wrap layout-align="space-between center">
-                        <ma-svg flex="5"
-                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg'" />
-                        <span flex flex-offset="5">PRE-ALARM</span>
-                        <ma-svg flex="5"
-                            ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg'" />
-                        <span flex flex-offset="5">OFF</span>
+                </info-window>
+                <info-window id="setPoint1">
+                    <div>
+                        <ma-set-point-value point="myPoint1"></ma-set-point-value>
                     </div>
+                </info-window>
+                <info-window id="chart1">
+                    <div layout="row" layout-padding>
+                        <ma-serial-chart style="height: 40px; width: 100%" series-1-point="myPoint3"
+                            series-1-values="chart1Vals"></ma-serial-chart>
+                    </div>
+                </info-window>
+            </ma-map>
+            <br />
+            <div layout="column" layout-wrap>
+                <div flex layout="row" layout-wrap layout-align="space-between center">
+                    <ma-svg flex="5"
+                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg'" />
+                    <span flex flex-offset="5">NORMAL</span>
+                    <ma-svg flex="5"
+                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg'" />
+                    <span flex flex-offset="5"> CRITIC STATE</span>
                 </div>
-            </md-card-content>
-        </md-card>
-        <md-card flex="70" layout-padding>
-            <md-table-container>
-                <table layout-padding md-table md-row-select multiple ng-model="page.selected" md-progress="promise">
-                    <div ng-style=" 'margin-bottom': '2px'">
-                        <thead md-head>
-                            <tr md-row ng-style="{'background-color': '#121212'}" class="md-whiteframe-8dp">
-                                <th md-column ng-style="{'color': '#00ADEF'}">STATE</th>
-                                <th md-column ng-style="{'color': '#00ADEF'}">MDC</th>
-                                <th md-column ng-style="{'color': '#00ADEF'}">CURRENT TEMP.</th>
-                                <th md-column ng-style="{'color': '#00ADEF'}">OPERAT. MODE</th>
-                                <th md-column ng-style="{'color': '#00ADEF'}">PREV. DAY CONS.</th>
-                                <th md-column ng-style="{'color': '#00ADEF'}">CURRENT CONS.</th>
-                                <th md-column ng-style="{'color': '#00ADEF'}">UPS LOAD</th>
-                            </tr>
-                        </thead>
-                    </div>
-                    <div ng-style=" 'margin-bottom': '2px'">
-                        <tbody md-body>
-                            <tr md-row ng-style="{'background-color': '#313131'}"
-                                ng-repeat="(MDCID, mdc) in $ctrl.mdcs">
-                                <td md-cell>
+                <br />
+                <div flex layout="row" layout-wrap layout-align="space-between center">
+                    <ma-svg flex="5"
+                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg'" />
+                    <span flex flex-offset="5">PRE-ALARM</span>
+                    <ma-svg flex="5"
+                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg'" />
+                    <span flex flex-offset="5">OFF</span>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
+    <md-card flex="70" layout-padding>
+        <md-table-container>
+            <table md-table md-row-select multiple ng-model="page.selected" md-progress="promise">
+                <div ng-style=" 'margin-bottom': '2px'">
+                    <thead layout-padding md-head>
+                        <tr md-row ng-style="{'background-color': '#121212'}" class="md-whiteframe-8dp">
+                            <th md-column ng-style="{'color': '#00ADEF'}">STATE</th>
+                            <th md-column ng-style="{'color': '#00ADEF'}">MDC</th>
+                            <th md-column ng-style="{'color': '#00ADEF'}">CURRENT TEMP.</th>
+                            <th md-column ng-style="{'color': '#00ADEF'}">OPERAT. MODE</th>
+                            <th md-column ng-style="{'color': '#00ADEF'}">PREV. DAY CONS.</th>
+                            <th md-column ng-style="{'color': '#00ADEF'}">CURRENT CONS.</th>
+                            <th md-column ng-style="{'color': '#00ADEF'}">UPS LOAD</th>
+                        </tr>
+                    </thead>
+                </div>
+                <div ng-style=" 'margin-bottom': '2px'">
+                    <tbody layout-padding   md-body>
+                        <tr md-row layout-padding ng-style="{'background-color': '#313131'}"
+                            ng-repeat="(MDCID, mdc) in $ctrl.mdcs">
+                            <td md-cell>
+                                <div>
+                                    <md-icon
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg"
+                                        ng-if="statusOfMDC.textRenderer.multistateValues[0].text == 'OFF'" />
+                                    <md-icon
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg"
+                                        ng-if="statusOfMDC.textRenderer.multistateValues[1].text == 'CRITIC-STATE'" />
+                                    <md-icon
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg"
+                                        ng-if="statusOfMDC.textRenderer.multistateValues[2].text == 'PRE-ALARM'" />
+                                    <md-icon
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg"
+                                        ng-if="statusOfMDC.textRenderer.multistateValues[3].text == 'NORMAL'" />
+                                </div>
+                            </td>
+                            <td md-cell>
+                                {{MDCID}}
+                            </td>
+                            <td md-cell>
+                                <div layout="row">
+                                    <md-icon flex
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/termometer.svg" />
+                                    <ma-point-value flex point="mdc.temp"></ma-point-value>
+                                </div>
+                            </td>
+                            <td md-cell>
+                                <div layout="row">
+                                    <md-icon flex
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareGreen.svg"
+                                        ng-if="mdc.operationMode.value" />
+                                    <md-icon flex
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/squareYellow.svg"
+                                        ng-if="!mdc.operationMode.value" />
+                                    <ma-point-value flex point="mdc.operationMode"></ma-point-value>
+                                </div>
+                            </td>
+                            <td md-cell>
+                                <div layout="row">
+                                    <md-icon flex
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/charging.svg" />
+                                    <ma-point-value flex point="mdc.totalEnergy"></ma-point-value>
+                                </div>
+                            </td>
+                            <td md-cell>
+                                <div layout="row">
+                                    <md-icon flex
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/gauge.svg" />
+                                    <ma-point-value flex point="mdc.totalAveragePower"></ma-point-value>
+                                </div>
+                            </td>
+                            <td md-cell>
+                                <div layout="row">
+                                    <md-icon flex
+                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/battery.svg" />
+                                    <ma-point-value flex point="mdc.upsLoad"></ma-point-value>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
+            </table>
+        </md-table-container>
 
-                                    {{MDCID}}
-                                </td>
-                                <td md-cell>
-                                    <ma-point-value point="mdc.temp"></ma-point-value>
-                                    {{mdc.temp.value}}
-                                </td>
-                                <td md-cell>{{point.xid}}</td>
-                            </tr>
-                        </tbody>
-                    </div>
-                </table>
-            </md-table-container>
-
-            <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 20]" md-page="query.page"
-                md-total="{{points.$total}}" md-page-select></md-table-pagination>
-        </md-card>
-    </div>
+        <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 20]" md-page="query.page"
+            md-total="{{MDCID.$total}}" md-page-select></md-table-pagination>
+    </md-card>
 </div>
