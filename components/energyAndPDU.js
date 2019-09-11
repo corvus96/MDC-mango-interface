@@ -38,12 +38,8 @@ define(['angular', 'require'], function (angular, require) {
 
         this.refreshMDCs = () => {
             let queryBuilder = maDataPointTags.buildQuery('MDCID');
-
-            if (this.site == 'ALL') {
-                queryBuilder.ne('siteName', null);
-            } else {
+                queryBuilder.ne('MDCID', null);
                 queryBuilder.eq('siteName', this.site);
-            }
 
             return queryBuilder
                 .query()
@@ -59,6 +55,7 @@ define(['angular', 'require'], function (angular, require) {
                             this.MDC = null;
                         }
                     }
+                    
                     this.MDCChanged();
 
                 });
@@ -69,7 +66,7 @@ define(['angular', 'require'], function (angular, require) {
         this.MDCChanged = () => {
             $stateParams.MDC = this.MDC;
             $state.go('.', $stateParams, { location: 'replace', notify: false });
-            this.outputs = {};
+
             maPoint
                 .buildQuery()
                 .eq('tags.MDCID', this.MDC)
@@ -106,11 +103,11 @@ define(['angular', 'require'], function (angular, require) {
 
         this.outputChanged = () => {
             $stateParams.output = this.output;
-            console.log(this.output)
             $state.go('.', $stateParams, { location: 'replace', notify: false });
             return maPoint
             .buildQuery()
             .eq('tags.outputs', this.output)
+            .eq('tags.MDCID', this.MDC)     
             .limit(1000)
             .query()
             .then((points) => {
@@ -121,14 +118,34 @@ define(['angular', 'require'], function (angular, require) {
         this.generalPoints = (points) => {
             this.totalAveragePower = this.filterByName(points, 'total-power-1');
             this.totalEnergy = this.filterByName(points, 'total-energy-1');
+            
+            console.log(this.totalEnergy)
         };
 
         this.especificPoints = (points) => {
-            this.volt = this.filterByOutput(points,this.output)
-            this.current = this.filterByOutput(points,this.output)
+            points.forEach(point => {
+                if(point.name == 'volt-take-1'||
+                point.name == 'volt-take-2'||
+                point.name == 'volt-take-3'||
+                point.name == 'volt-take120-1'||
+                point.name == 'volt-take120-2'||
+                point.name == 'volt-take120-3'){
+
+                    this.volt = point;
+                }
+
+                else if(point.name == 'current-take-1'||
+                point.name == 'current-take-2'||
+                point.name == 'current-take-3'||
+                point.name == 'current-take120-1'||
+                point.name == 'current-take120-2'||
+                point.name == 'current-take120-3'){
+
+                    this.current = point;
+                }
+            
+            });
             console.log(points)
-            console.log(this.output)
-            console.log(this.outputs)
             console.log(this.volt)
             console.log(this.current)
         };
@@ -136,12 +153,6 @@ define(['angular', 'require'], function (angular, require) {
         this.filterByName = (points, name) => {
             return points.filter(point => {
                 return point.name == name;
-            })[0];
-        };
-
-        this.filterByOutput = (points,output) => {
-            return points.filter(point => {
-                return  point.tags.outputs == output;
             })[0];
         };
 

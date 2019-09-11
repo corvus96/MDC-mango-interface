@@ -1,84 +1,79 @@
-<div layout="column" flex layout-wrap>
-    <div flex layout="row" layout-align="space-between center" layout-wrap>
-        <div flex="100" flex-gt-sm="40" layout="row">
-            <md-input-container flex="100" flex-gt-xs="50">
-                <label>REGION</label>
-                <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
-                    <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
-                        {{site}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-            <md-input-container flex="100" flex-gt-xs="50">
-                <label>ID OF MDC</label>
-                <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
-                    <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
-                        {{MDC}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
-        </div>
+<div layout="row" layout-align="space-between center" layout-wrap>
+    <div flex="100" flex-gt-sm="40" layout="row">
+        <md-input-container flex="100" flex-gt-xs="50">
+            <label>REGION</label>
+            <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
+                <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
+                    {{site}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex="100" flex-gt-xs="50">
+            <label>ID OF MDC</label>
+            <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
+                <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
+                    {{MDC}}
+                </md-option>
+            </md-select>
+        </md-input-container>
     </div>
+</div>
 
-    <div flex layout="row" layout-align="space-between stretch">
-        <md-card flex="100" layout="column" layout-padding="" flex-gt-sm="30">
-            <md-card-title>
+<div layout="row" layout-wrap layout-align="space-between stretch">
+    <md-card flex flex-gt-sm="33" layout="column" layout-padding="" class="md-whiteframe-8dp">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">PDU</span> <br />
+                <span class="md-subhead">TOTAL DAILY ENERGY (MWh)</span>
+            </md-card-title-text>
+        </md-card-title>
+        <ma-gauge-chart point="$ctrl.totalEnergy" interval="150" start="0" end="1500" style="width:90%; height:260px" />
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-subhead">INSTANTANEUS POWER (KVA)</span>
+            </md-card-title-text>
+        </md-card-title>
+        <ma-gauge-chart point="$ctrl.totalAveragePower" interval="1" start="0" end="20"
+            style="width:90%; height:260px" />
+    </md-card>
+    <md-card flex="100" flex-gt-sm="60" class="md-whiteframe-8dp">
+        <div layout="column" layout-padding="">
+            <md-input-container flex>
+                <label>Select a PDU output:</label>
+                <md-select ng-model="$ctrl.output" ng-change="$ctrl.outputChanged()">
+                    <md-option ng-repeat="output in $ctrl.outputs" value="{{output}}">
+                        {{output}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-card-title flex>
                 <md-card-title-text>
-                    <span class="md-headline">PDU</span> <br />
-                    <span class="md-subhead">TOTAL DAILY ENERGY (MWh)</span>
+                    <span class="md-headline">VOLT HISTORY</span>
                 </md-card-title-text>
             </md-card-title>
-            <ma-gauge-chart point="$ctrl.totalEnergy" interval="150" start="0" end="1500"
-                style="width:90%; height:260px" />
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-subhead">INSTANTANEUS POWER (KVA)</span>
-                </md-card-title-text>
-            </md-card-title>
-            <ma-gauge-chart point="$ctrl.totalAveragePower" interval="1" start="0" end="20"
-                style="width:90%; height:260px" />
-        </md-card>
-        <md-card flex="100" flex-gt-sm="70">
-            <div layout="column" layout-wrap layout-padding="">
-                <md-input-container flex >
-                    <label>Select a PDU output:</label>
-                    <md-select ng-model="$ctrl.output" ng-change="$ctrl.outputChanged()">
-                        <md-option ng-repeat="output in $ctrl.outputs" value="{{output}}">
-                            {{output}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-card-title flex>
-                    <md-card-title-text>
-                        <span class="md-headline">VOLT HISTORY</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content flex>
-                    <ma-point-values point="$ctrl.totalAveragePower" values="$ctrl.totalAveragePowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                    <ma-serial-chart style="height: 270px; width: 100%" series-1-values="$ctrl.totalAveragePowerValues"
-                        series-1-point="$ctrl.totalAveragePower" series-1-title="Humidity" legend="false">
-                    </ma-serial-chart>
-                </md-card-content>
-                <md-card-title>
-                    <md-card-title-text>
-                        <span class="md-headline">CURRENT HISTORY</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content>
-                    <ma-point-values point="$ctrl.totalAveragePower" values="$ctrl.totalAveragePowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                    <ma-serial-chart style="height: 270px; width: 100%" series-1-values="$ctrl.totalAveragePowerValues"
-                        series-1-point="$ctrl.totalAveragePower" series-1-title="Humidity" legend="false">
-                    </ma-serial-chart>
-                </md-card-content>
+            <div flex>
+                <ma-point-values point="$ctrl.volt" values="$ctrl.voltValues" from="$ctrl.maUiDateBar.from"
+                    to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
+                    rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
+                </ma-point-values>
+                <ma-serial-chart style="height: 270px; width: max-content" series-1-values="$ctrl.voltValues"
+                    series-1-point="$ctrl.volt" series-1-title="Volt" legend="false">
+                </ma-serial-chart>
             </div>
-        </md-card>
-    </div>
+            <md-card-title flex>
+                <md-card-title-text>
+                    <span class="md-headline">CURRENT HISTORY</span>
+                </md-card-title-text>
+            </md-card-title>
+            <div flex>
+                <ma-point-values point="$ctrl.current" values="$ctrl.currentValues" from="$ctrl.maUiDateBar.from"
+                    to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
+                    rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
+                </ma-point-values>
+                <ma-serial-chart style="height: 270px; width: max-content" series-1-values="$ctrl.currentValues"
+                    series-1-point="$ctrl.current" series-1-title="Current" legend="false">
+                </ma-serial-chart>
+            </div>
+        </div>
+    </md-card>
 </div>
