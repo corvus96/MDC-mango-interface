@@ -1,6 +1,6 @@
-<div layout="row" layout-align="space-between start" layout-wrap>
-    <md-card flex class="md-whiteframe-8dp">
-        <md-card-content>
+<div layout="row" layout-align="space-between start" layout-sm="column" layout-align-sm="center stretch" layout-xs="column" layout-align-xs="center stretch">
+    <md-card flex="100"  class="md-whiteframe-8dp">
+        <md-card-content layout="column">
             <p>MAP</p>
             <ma-map lat="-12.95" long="-38.45" zoom="12" map-type="roadmap" info-window-theme="dark"
                 desktop-height="600px" mobile-height="450px" ng-init="myMarkers={
@@ -32,32 +32,31 @@
             </ma-map>
             <br />
             <div layout="column" layout-wrap>
-                <div flex layout="row" layout-wrap layout-align="space-between center">
-                    <ma-svg flex="5"
-                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg'" />
-                    <span flex flex-offset="5">NORMAL</span>
-                    <ma-svg flex="5"
-                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg'" />
-                    <span flex flex-offset="5"> CRITIC STATE</span>
+                <div flex layout="row" layout-wrap layout-align="space-around center">
+                        <md-icon flex
+                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg" />
+                    <h6 flex >NORMAL</h6>
+                    <md-icon flex
+                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg" />
+                    <h6 flex > CRITIC STATE</h6>
                 </div>
                 <br />
-                <div flex layout="row" layout-wrap layout-align="space-between center">
-                    <ma-svg flex="5"
-                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg'" />
-                    <span flex flex-offset="5">PRE-ALARM</span>
-                    <ma-svg flex="5"
-                        ng-include="'/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg'" />
-                    <span flex flex-offset="5">OFF</span>
+                <div flex layout="row" layout-wrap layout-align="space-around center">
+                        <md-icon flex
+                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg" />
+                    <h6 flex >PRE-ALARM</h6>
+                    <md-icon flex
+                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg" />
+                    <h6 flex >OFF</h6>
                 </div>
             </div>
         </md-card-content>
     </md-card>
-    <md-card flex="70" layout-padding class="md-whiteframe-8dp">
+    <md-card flex="100" flex-gt-sm="65" layout-padding class="md-whiteframe-8dp">
         <md-table-container>
             <table md-table md-row-select multiple ng-model="page.selected" md-progress="promise">
-                <div ng-style=" 'margin-bottom': '2px'">
-                    <thead layout-padding md-head>
-                        <tr md-row ng-style="{'background-color': '#121212'}" class="md-whiteframe-8dp">
+                    <thead  layout-padding md-head>
+                        <tr   md-row ng-style="{'background-color': '#121212'}" class="md-whiteframe-8dp">
                             <th md-column ng-style="{'color': '#00ADEF'}">STATE</th>
                             <th md-column ng-style="{'color': '#00ADEF'}">MDC</th>
                             <th md-column ng-style="{'color': '#00ADEF'}">CURRENT TEMP.</th>
@@ -67,25 +66,15 @@
                             <th md-column ng-style="{'color': '#00ADEF'}">UPS LOAD</th>
                         </tr>
                     </thead>
-                </div>
-                <div ng-style=" 'margin-bottom': '2px'">
-                    <tbody layout-padding   md-body>
-                        <tr md-row layout-padding ng-style="{'background-color': '#313131'}"
+                    <tbody  layout-padding   md-body>
+                        <tr   md-row layout-padding ng-style="{'background-color': '#313131'}"
                             ng-repeat="(MDCID, mdc) in $ctrl.mdcs">
                             <td md-cell>
                                 <div>
-                                    <md-icon
-                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg"
-                                        ng-if="statusOfMDC.textRenderer.multistateValues[0].text == 'OFF'" />
-                                    <md-icon
-                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg"
-                                        ng-if="statusOfMDC.textRenderer.multistateValues[1].text == 'CRITIC-STATE'" />
-                                    <md-icon
-                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg"
-                                        ng-if="statusOfMDC.textRenderer.multistateValues[2].text == 'PRE-ALARM'" />
-                                    <md-icon
-                                        md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg"
-                                        ng-if="statusOfMDC.textRenderer.multistateValues[3].text == 'NORMAL'" />
+                                    <md-icon>
+                                        <ma-switch-img point="mdc.statusOfMDC" src-1="/rest/v2/file-stores/public/components/img-icon-svg/databaseGray.svg" src-2="/rest/v2/file-stores/public/components/img-icon-svg/databaseRed.svg" src-3="/rest/v2/file-stores/public/components/img-icon-svg/databaseYellow.svg" src-4="/rest/v2/file-stores/public/components/img-icon-svg/databaseGreen.svg">
+                                        </ma-switch-img>
+                                    </md-icon>
                                 </div>
                             </td>
                             <td md-cell>
@@ -128,7 +117,6 @@
                                     <md-icon flex
                                         md-svg-src="/rest/v2/file-stores/public/components/img-icon-svg/battery.svg" />
                                     <ma-point-value flex point="mdc.upsLoad"></ma-point-value>
-                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -137,6 +125,6 @@
         </md-table-container>
 
         <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 20]" md-page="query.page"
-            md-total="{{MDCID.length}}" md-page-select></md-table-pagination>
+            md-total="{{$ctrl.mdcs.length}}" md-page-select></md-table-pagination>
     </md-card>
 </div>

@@ -86,7 +86,7 @@ define(['angular', 'require'], function (angular, require) {
                 };
                 
             });
-            console.log(this.mdcs) 
+            console.log(this.mdcs);
         };
 
         this.filterByNameAndMDCID = (points, name, MDCID) => {

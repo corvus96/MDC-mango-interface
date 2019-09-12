@@ -1,6 +1,6 @@
 <div layout="row" layout-align="space-between center" layout-wrap>
-    <div flex="100" flex-gt-sm="40" layout="row">
-        <md-input-container flex="100" flex-gt-xs="50">
+    <div  flex="100" flex-gt-sm="40" layout="row">
+        <md-input-container class="md-block" flex="100" flex-gt-xs="50">
             <label>REGION</label>
             <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
                 <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
@@ -8,7 +8,7 @@
                 </md-option>
             </md-select>
         </md-input-container>
-        <md-input-container flex="100" flex-gt-xs="50">
+        <md-input-container class="md-block" flex="100" flex-gt-xs="50">
             <label>ID OF MDC</label>
             <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
                 <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div layout="row" layout-wrap layout-align="space-between stretch">
+<div layout="row" layout-wrap layout-align="space-around stretch">
     <md-card flex flex-gt-sm="33" layout="column" layout-padding="" class="md-whiteframe-8dp">
         <md-card-title>
             <md-card-title-text>
@@ -56,7 +56,7 @@
                     to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
                     rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
                 </ma-point-values>
-                <ma-serial-chart style="height: 270px; width: max-content" series-1-values="$ctrl.voltValues"
+                <ma-serial-chart style="height: 270px; width: 100%" series-1-values="$ctrl.voltValues"
                     series-1-point="$ctrl.volt" series-1-title="Volt" legend="false">
                 </ma-serial-chart>
             </div>
@@ -70,7 +70,7 @@
                     to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
                     rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
                 </ma-point-values>
-                <ma-serial-chart style="height: 270px; width: max-content" series-1-values="$ctrl.currentValues"
+                <ma-serial-chart style="height: 270px; width: 100%" series-1-values="$ctrl.currentValues"
                     series-1-point="$ctrl.current" series-1-title="Current" legend="false">
                 </ma-serial-chart>
             </div>

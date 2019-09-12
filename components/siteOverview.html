@@ -1,6 +1,24 @@
 <div layout="column" layout-align="center stretch">
-    <div flex layout="row" layout-align="space-around start" layout-wrap>
-        <div flex="30">
+    <div flex layout="row" layout-align="space-around start" layout-wrap >
+            <div  flex="100" flex-gt-sm="40" layout="row" hide-gt-md >
+                    <md-input-container class="md-block" flex="100" flex-gt-xs="50">
+                        <label>REGION</label>
+                        <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
+                            <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
+                                {{site}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="100" flex-gt-xs="50">
+                        <label>ID OF MDC</label>
+                        <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
+                            <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
+                                {{MDC}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+        <div flex="30" flex-sm="100" flex-md="100" flex-xs="100">
             <md-card layout="column" layout-fill class="md-whiteframe-8dp">
                 <img ng-style="{'width': 'max-width'}"
                     src="/rest/v2/file-stores/public/components/img-icon-svg/DataBunker.png" />
@@ -41,7 +59,7 @@
             </md-card>
         </div>
         <div layout="column">
-            <md-input-container flex="100" flex-gt-xs="50">
+            <md-input-container  flex="100" flex-gt-xs="50" hide-xs hide-sm hide-md show-gt-md>
                 <label>REGION</label>
                 <md-select ng-model="$ctrl.site" ng-change="$ctrl.siteChanged()">
                     <md-option ng-repeat="site in $ctrl.sites" value="{{site}}">
@@ -141,7 +159,7 @@
             </md-card>
         </div>
         <div layout="column">
-            <md-input-container flex="100" flex-gt-xs="50">
+            <md-input-container flex="100" flex-gt-xs="50" hide-xs hide-sm hide-md show-gt-md>
                 <label>ID OF MDC</label>
                 <md-select ng-model="$ctrl.MDC" ng-change="$ctrl.MDCChanged()">
                     <md-option ng-repeat="MDC in $ctrl.MDCIDs" value="{{MDC}}">
@@ -231,132 +249,84 @@
                     <span class="md-headline">STATISTICS</span>
                 </md-card-title-text>
             </md-card-title>
-            <md-md-card-content>
-                <div ng-if="data.cb1">
-                    <ma-point-values point="$ctrl.activePower" values="$ctrl.activePowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                </div>
-                <div ng-if="data.cb2">
-                    <ma-point-values point="$ctrl.totalReactivePower" values="$ctrl.totalReactivePowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                </div>
-                <div ng-if="data.cb3">
-                    <ma-point-values point="$ctrl.totalPower" values="$ctrl.totalPowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                </div>
-                <div ng-if="data.cb4">
-                    <ma-point-values point="$ctrl.activeCoolingPower" values="$ctrl.activeCoolingPowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                </div>
-                <div ng-if="data.cb5">
-                    <ma-point-values point="$ctrl.totalRefriReactivePower" values="$ctrl.totalRefriReactivePowerValues"
-                        from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                        rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                        rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                    </ma-point-values>
-                    <div ng-if="data.cb6">
-                        <ma-point-values point="$ctrl.totalRefrigerationPower"
-                            values="$ctrl.totalRefrigerationPowerValues" from="$ctrl.maUiDateBar.from"
-                            to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                            rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                        </ma-point-values>
-                    </div>
-                    <div ng-if="data.cb7">
-                        <ma-point-values point="$ctrl.temp" values="$ctrl.tempValues" from="$ctrl.maUiDateBar.from"
-                            to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                            rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                        </ma-point-values>
-                    </div>
-                    <div ng-if="data.cb8">
-                        <ma-point-values point="$ctrl.upsLoad" values="$ctrl.upsLoadValues"
-                            from="$ctrl.maUiDateBar.from" to="$ctrl.maUiDateBar.to"
-                            rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                            rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                        </ma-point-values>
-                    </div>
-                    <div ng-if="data.cb9">
-                        <ma-point-values point="$ctrl.humid" values="$ctrl.humidValues" from="$ctrl.maUiDateBar.from"
-                            to="$ctrl.maUiDateBar.to" rollup="{{$ctrl.maUiDateBar.rollupType}}"
-                            rollup-interval="{{$ctrl.maUiDateBar.rollupIntervals}} {{$ctrl.maUiDateBar.rollupIntervalPeriod}}">
-                        </ma-point-values>
-                    </div>
-                </div>
-                <ma-serial-chart style="height: 480px; width: 100%" series-1-values="$ctrl.activePowerValues"
-                    series-1-point="$ctrl.activePower" series-2-values="$ctrl.totalReactivePowerValues"
-                    series-2-point="$ctrl.totalReactivePower" series-3-values="$ctrl.totalPowerValues"
-                    series-3-point="$ctrl.totalPower" series-4-values="$ctrl.activeCoolingPowerValues"
-                    series-4-point="$ctrl.activeCoolingPower" series-5-values="$ctrl.totalRefriReactivePowerValues"
-                    series-5-point="$ctrl.totalRefriReactivePower" series-6-values="$ctrl.totalRefrigerationPowerValues"
-                    series-6-point="$ctrl.totalRefrigerationPower" series-7-values="$ctrl.tempValues"
-                    series-7-point="$ctrl.temp" series-8-values="$ctrl.upsLoadValues" series-8-point="$ctrl.upsLoad"
-                    series-9-values="$ctrl.humidValues" 
-                    series-9-point="$ctrl.humid" 
-                    legend="false"
-                    balloon="true">
+            <md-card-content>
+                <ma-point-values rendered="true" point="$ctrl.activePower" values="$ctrl.activePowerValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.totalReactivePower"
+                    values="$ctrl.totalReactivePowerValues" from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'"
+                    to="$ctrl.maUiDateBar.to" rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.totalPower" values="$ctrl.totalPowerValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.activeCoolingPower"
+                    values="$ctrl.activeCoolingPowerValues" from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'"
+                    to="$ctrl.maUiDateBar.to" rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.totalRefriReactivePower"
+                    values="$ctrl.totalRefriReactivePowerValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.totalRefrigerationPower"
+                    values="$ctrl.totalRefrigerationPowerValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.temp" values="$ctrl.tempValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.upsLoad" values="$ctrl.upsLoadValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-point-values rendered="true" point="$ctrl.humid" values="$ctrl.humidValues"
+                    from="$ctrl.maUiDateBar.from | maMoment:'subtract':7:'days'" to="$ctrl.maUiDateBar.to"
+                    rollup="AVERAGE" rollup-interval="1 hours">
+                </ma-point-values>
+                <ma-serial-chart flex style="height: 480px; width: 100%" series-1-values="$ctrl.activePowerValues"
+                    series-1-point="$ctrl.activePower" series-1-title="AVERAGE ACTIVE POWER"
+                    series-4-values="$ctrl.totalReactivePowerValues" series-4-point="$ctrl.totalReactivePower"
+                    series-4-title="AVERAGE REACTIVE POWER" series-7-values="$ctrl.totalPowerValues"
+                    series-7-point="$ctrl.totalPower" series-7-title="TOTAL AVERAGE POWER"
+                    series-2-values="$ctrl.activeCoolingPowerValues" series-2-point="$ctrl.activeCoolingPower"
+                    series-2-title="ACTIVE COOLING POWER" series-5-values="$ctrl.totalRefriReactivePowerValues"
+                    series-5-point="$ctrl.totalRefriReactivePower" series-5-title="REACTIVE COOLING POWER"
+                    series-8-values="$ctrl.totalRefrigerationPowerValues" series-8-point="$ctrl.totalRefrigerationPower"
+                    series-8-title="TOTAL REFRIGERATION POWER" series-3-values="$ctrl.tempValues"
+                    series-3-point="$ctrl.temp" series-3-title="AVERAGE TEMPERATURE"
+                    series-6-values="$ctrl.upsLoadValues" series-6-point="$ctrl.upsLoad" series-6-title="UPS LOAD LEVEL"
+                    series-9-values="$ctrl.humidValues" series-9-point="$ctrl.humid" series-9-title="HUMIDITY" options="{
+                        'legend' : { 
+                                        'divId': 'legend',
+                                        'enabled': 'true',
+                                        'valueText' : '',
+                                        'align': 'left',
+                                        'fontSize' : 12,
+                                        'markerDisabledColor': '#1E1E1E',
+                                        'markerBorderColor': '#00ADEF',
+                                        'markerBorderThickness': 1,
+                                        'markerLabelGap': 10,
+                                        'markerSize': 18,
+                                        'markerBorderThickness': 1,
+                                        'maxColumns': 3,
+                                        'color': '#BCBCBC',
+                                        'switchColor': '#BCBCBC',
+                                        'switchType': ' ',
+                                     },   
+                                    }">
                 </ma-serial-chart>
                 <md-card-title-text layout-padding flex>
                     <span class="md-subhead">AVAILABLE VARIABLES</span>
                 </md-card-title-text>
-                <div layout-wrap layout-gt-sm="row" layout-padding>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb1" aria-label="Checkbox 1">
-                            <h6 ng-style="{'color': '#BCBCBC'}">AVERAGE ACTIVE POWER</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb4" aria-label="Checkbox 4">
-                            <h6 ng-style="{'color': '#BCBCBC'}">ACTIVE COOLING POWER</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb7" aria-label="Checkbox 7">
-                            <h6 ng-style="{'color': '#BCBCBC'}">AVERAGE TEMPERATURE</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb2" aria-label="Checkbox 2">
-                            <h6 ng-style="{'color': '#BCBCBC'}">AVERAGE REACTIVE POWER</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb5" aria-label="Checkbox 5">
-                            <h6 ng-style="{'color': '#BCBCBC'}">REACTIVE COOLING POWER</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb8" aria-label="Checkbox 8">
-                            <h6 ng-style="{'color': '#BCBCBC'}">UPS LOAD LEVEL</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb3" aria-label="Checkbox 3">
-                            <h6 ng-style="{'color': '#BCBCBC'}">TOTAL AVERAGE POWER</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb6" aria-label="Checkbox 6">
-                            <h6 ng-style="{'color': '#BCBCBC'}">TOTAL REFRIGERATION POWER</h6>
-                        </md-checkbox>
-                    </div>
-                    <div flex-gt-sm="30">
-                        <md-checkbox class="md-accent-hue-1" ng-model="data.cb9" aria-label="Checkbox 9">
-                            <h6 ng-style="{'color': '#BCBCBC'}">HUMIDITY</h6>
-                        </md-checkbox>
-                    </div>
+                <div id="legend" layout-wrap layout-gt-sm="row" layout-padding>
+
                 </div>
-            </md-md-card-content>
+            </md-card-content>
         </md-card>
     </div>
 </div>

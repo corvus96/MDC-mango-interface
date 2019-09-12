@@ -7,7 +7,7 @@ define(['angular', 'require'], function (angular, require) {
             $scope.data = {};
             $scope.data.cb1 = false;
             $scope.data.cb2 = false;
-            $scope.data.cb3 = false;
+            $scope.data.cb3 = true;
             $scope.data.cb4 = false;
             $scope.data.cb5 = false;
             $scope.data.cb6 = false;
